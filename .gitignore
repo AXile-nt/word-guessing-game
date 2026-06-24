@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local model/cache files
+models/
+
+# Build and package outputs
+build/
+dist/
+*.spec
+*.zip
+*.exe
+
+# Local/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Temporary agent/build folders
+.build/
+.bands/
+.ponytail-src/

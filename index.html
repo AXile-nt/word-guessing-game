@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>语义猜词 · 找到那个隐藏的词</title>
+<link rel="icon" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="phone">
+
+  <!-- ===== 开始页 ===== -->
+  <section id="startScreen" class="screen start-screen">
+    <img src="logo.png" alt="logo" class="logo">
+    <h1 class="brand">语义猜词</h1>
+    <p class="tagline">输入任何词，找到那个隐藏的词</p>
+
+    <div class="rules-card">
+      <div class="rule"><span class="r-num">1</span><span>系统藏了一个词，先给你它的<strong>字数</strong>和<strong>抽象描述</strong></span></div>
+      <div class="rule"><span class="r-num">2</span><span>输入任何词，反馈<strong>相似度</strong>和<strong>排名</strong></span></div>
+      <div class="rule"><span class="r-num">3</span><span>越接近分数越高、排名越靠前。猜中即过关</span></div>
+      <div class="rule-hint">💡 绿色=接近，红色=很远。任何词都能猜，包括生造词、网络词</div>
+    </div>
+
+    <button id="startBtn" class="primary big">开始游戏</button>
+    <div id="startStatus" class="start-status"></div>
+  </section>
+
+  <!-- ===== 猜词页 ===== -->
+  <section id="gameScreen" class="screen game-screen hidden">
+
+    <header class="topbar">
+      <div class="title">语义猜词</div>
+      <div class="stats">
+        <span id="guessCount">0</span><span class="muted"> 次</span>
+        <span class="dot">·</span>
+        <span id="roundLabel">第 1 局</span>
+      </div>
+    </header>
+
+    <!-- 提示区 -->
+    <div class="hints">
+      <div class="hint-box">
+        <div class="hint-label">提示① 字数</div>
+        <div class="hint-value" id="hint1">— 字</div>
+      </div>
+      <div class="hint-box hint-box-2">
+        <div class="hint-label">提示② 抽象描述</div>
+        <div class="hint-value hint-desc" id="hint2">—</div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <input id="guessInput" type="text" autocomplete="off" autocapitalize="off"
+             placeholder="输入一个词试试…" enterkeyhint="send">
+      <button id="submitBtn" aria-label="提交">猜</button>
+    </div>
+
+    <div id="lastFeedback" class="feedback" aria-live="polite">
+      <div class="fb-empty">输入你的第一个词开始 ↑</div>
+    </div>
+
+    <div class="list-wrap">
+      <div class="list-head">
+        <span>猜测历史</span>
+        <span class="muted">按相似度排序</span>
+      </div>
+      <ul id="guessList" class="guess-list"></ul>
+    </div>
+
+    <footer class="bottom">
+      <button id="hintBtn" class="ghost">💡 提示 (-1)</button>
+      <button id="newBtn" class="ghost">🔄 换一个</button>
+    </footer>
+
+    <div id="winOverlay" class="overlay hidden">
+      <div class="modal">
+        <div class="trophy">🎉</div>
+        <div class="win-word" id="winWord">目标词</div>
+        <div class="win-sub" id="winSub">用了 N 次</div>
+        <div class="win-best" id="winBest"></div>
+        <button id="playAgain" class="primary">再来一局</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 加载/错误提示 (默认隐藏, 开始页是首屏) -->
+  <div id="loader" class="loader hidden">
+    <div class="loader-inner">
+      <div class="spinner"></div>
+      <div id="loaderText">正在加载…</div>
+      <div id="loaderSub" class="loader-sub"></div>
+    </div>
+  </div>
+
+</div>
+<script src="game.js"></script>
+</body>
+</html>
