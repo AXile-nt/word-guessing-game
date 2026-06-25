@@ -10,7 +10,7 @@
 4. 前端展示相似度百分比、排名和历史猜测。
 5. 玩家根据反馈逐步逼近目标词，命中后进入下一局。
 
-项目目标是保持结构简单，方便直接发布到 GitHub：源码和词表进仓库，模型缓存和安装包不进仓库。
+项目目标是保持结构简单，方便本地运行、阅读源码和二次修改。
 
 ## 当前技术栈
 
@@ -34,20 +34,12 @@
 ├── index.html
 ├── style.css
 ├── game.js
-├── logo.png
 ├── 启动游戏.bat
 ├── data/
 │   └── wordlist.txt
 └── docs/
     └── PROJECT.md
 ```
-
-## 不进入 GitHub 仓库的内容
-
-- `.agents/`、`AGENTS.md`：本地 agent 工作流配置，不属于游戏发布内容。
-- `__pycache__/`：Python 缓存。
-- `models/`：首次运行下载的模型缓存，包含接近或超过 100 MB 的权重文件。
-- `*.exe`、`*.zip`：安装包和分享包，适合放到 GitHub Release 附件，不适合直接提交到仓库。
 
 ## 后端流程
 
@@ -103,4 +95,3 @@
 - 想换词表：替换 `data/wordlist.txt`，保持一行一个词。
 - 想换端口：设置环境变量 `PORT`，例如 `set PORT=8010` 后运行 `python server.py`。
 - 想用已有模型：设置环境变量 `BGE_MODEL_DIR` 指向包含 `config.json` 的模型目录。
-- 想发布安装包：用打包工具生成 exe/zip 后上传到 GitHub Release，不要放进源码提交。

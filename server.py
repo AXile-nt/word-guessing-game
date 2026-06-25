@@ -255,10 +255,8 @@ class Handler(BaseHTTPRequestHandler):
         p = urllib.parse.urlparse(self.path).path
         if p == "/" or p == "/index.html":
             self._serve_file(os.path.join(HERE, "index.html"))
-        elif p in ("/style.css", "/game.js", "/logo.png", "/favicon.ico"):
+        elif p in ("/style.css", "/game.js"):
             fp = os.path.join(HERE, os.path.basename(p))
-            if p == "/favicon.ico" and not os.path.exists(fp):
-                fp = os.path.join(HERE, "logo.png")  # favicon 回退用 logo
             self._serve_file(fp)
         elif p == "/status":
             self._send(200, json.dumps({"ready": S.ready}))
